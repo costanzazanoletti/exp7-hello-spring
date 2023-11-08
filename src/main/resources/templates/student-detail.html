@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/fragments/resources :: headResources('Student Detail')"></head>
+<body>
+<nav th:replace="/fragments/navbar :: topNavbar('students')"></nav>
+<div class="container">
+  <h1>Student detail</h1>
+  <div th:if="${student != null}">
+    <p th:text="|Code: ${student.code}|"></p>
+    <p th:text="|Name: ${student.name}|"></p>
+  </div>
+  <div th:if="${student == null}">
+    Unable to find student
+  </div>
+  <a th:href="@{/students}">Back to student list</a>
+</div>
+
+<th:block th:replace="/fragments/resources :: jsResources"></th:block>
+</body>
+</html>

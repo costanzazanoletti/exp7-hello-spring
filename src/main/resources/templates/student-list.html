@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/fragments/resources :: headResources('Students')"></head>
+<body>
+<nav th:replace="/fragments/navbar :: topNavbar('students')"></nav>
+<div class="container">
+  <h1>Students</h1>
+  <ul th:if="${studentList.size() > 0}">
+    <li th:each="student : ${studentList}">
+      <a th:href="@{|/students/${student.code}|}">
+        <span th:text="${student.code}"></span>
+        <span th:text="${student.name}"></span>
+      </a>
+    </li>
+  </ul>
+  <div th:unless="${studentList.size() > 0}">No results</div>
+</div>
+
+<th:block th:replace="/fragments/resources :: jsResources"></th:block>
+</body>
+</html>

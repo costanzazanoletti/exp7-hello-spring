@@ -1,19 +1,17 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Home</title>
-</head>
+<head th:insert="/fragments/resources :: headResources('Home')"></head>
 <!-- dentro al template ho a disposizione un attributo che si chiama currentDate, randomNumber -->
 <body>
-<h1>Home Page</h1>
-<h2 th:text="|Today is ${currentDate}|"></h2>
-<div style="background-color:red">
-  <span>Random generated number:</span>
-  <span th:text="${randomNumber}"></span>
+<nav th:replace="/fragments/navbar :: topNavbar('home')"></nav>
+<div class="container">
+  <h1>Home Page</h1>
+  <h2 th:text="|Today is ${currentDate}|"></h2>
+  <div style="background-color:red">
+    <span>Random generated number:</span>
+    <span th:text="${randomNumber}"></span>
+  </div>
 </div>
+<th:block th:replace="/fragments/resources :: jsResources"></th:block>
 </body>
 </html>
